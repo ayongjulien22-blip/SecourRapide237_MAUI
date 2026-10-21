@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             xmlns:models="clr-namespace:SecourRapide237.MAUI.Models"
+             x:Class="SecourRapide237.MAUI.Pages.FichePage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader x:Name="Entete" Grid.Row="0" Title="Fiche" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,18,20,20" Spacing="12">
+
+                <Label x:Name="CategorieLabel" Style="{StaticResource Overline}" />
+                <Label x:Name="AccrocheLabel" Style="{StaticResource ScreenTitle}" />
+                <Label x:Name="IntroLabel" Style="{StaticResource Caption}" />
+
+                <Border x:Name="Illustration" StrokeThickness="0" HeightRequest="110">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+                    <Label x:Name="EmojiLabel" FontSize="54" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+
+                <VerticalStackLayout x:Name="ListeEtapes" Spacing="10">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:Etape">
+                            <Border Style="{StaticResource Card}">
+                                <Grid ColumnDefinitions="40,*" ColumnSpacing="12">
+                                    <Border BackgroundColor="{StaticResource BrandSoft}" WidthRequest="36" HeightRequest="36"
+                                            StrokeThickness="0" VerticalOptions="Start">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="18" />
+                                        </Border.StrokeShape>
+                                        <Label Text="{Binding Numero}" TextColor="{StaticResource Brand}" FontAttributes="Bold"
+                                               HorizontalOptions="Center" VerticalOptions="Center" />
+                                    </Border>
+                                    <VerticalStackLayout Grid.Column="1" Spacing="3">
+                                        <Label Text="{Binding Titre}" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                                        <Label Text="{Binding Detail}" Style="{StaticResource Caption}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <Border x:Name="AlerteCard" Style="{StaticResource WarnCard}" Padding="12,10">
+                    <Label x:Name="AlerteLabel" FontSize="12" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                </Border>
+
+                <Label Text="Ces conseils ne remplacent pas une formation aux premiers secours ni l'avis des secours."
+                       Style="{StaticResource Caption}" FontSize="11" HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <VerticalStackLayout Grid.Row="2" Spacing="8" Padding="20,10,20,14" BackgroundColor="White">
+            <Button Text="Appeler les secours" Style="{StaticResource PrimaryButton}" Clicked="OnAppelerClicked" />
+            <Button Text="J'ai terminé le geste" Style="{StaticResource OutlineButton}" HeightRequest="46" Clicked="OnTermineClicked" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

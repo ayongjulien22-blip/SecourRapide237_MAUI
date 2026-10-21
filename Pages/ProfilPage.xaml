@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             x:Class="SecourRapide237.MAUI.Pages.ProfilPage"
+             BackgroundColor="{StaticResource Surface}"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader Grid.Row="0" Title="Profil" BackRoute="HomePage" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,24,20,24" Spacing="14">
+
+                <Border BackgroundColor="{StaticResource Brand}" WidthRequest="84" HeightRequest="84"
+                        StrokeThickness="0" HorizontalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="42" />
+                    </Border.StrokeShape>
+                    <Label Text="👤" FontSize="40" HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+
+                <Label x:Name="NomLabel" Text="Utilisateur invité" Style="{StaticResource ScreenTitle}" FontSize="20"
+                       HorizontalOptions="Center" />
+
+                <Border Style="{StaticResource Card}" Padding="16">
+                    <VerticalStackLayout Spacing="12">
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Téléphone" Style="{StaticResource Caption}" />
+                            <Label x:Name="TelLabel" Grid.Column="1" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Compte" Style="{StaticResource Caption}" />
+                            <Label x:Name="CompteLabel" Grid.Column="1" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Mode" Style="{StaticResource Caption}" />
+                            <Label x:Name="ModeLabel" Grid.Column="1" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                        </Grid>
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Text="Version" Style="{StaticResource Caption}" />
+                            <Label x:Name="VersionLabel" Grid.Column="1" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Button Text="Guides hors ligne" Style="{StaticResource OutlineButton}" Clicked="OnHorsLigne" />
+                <Button x:Name="ConnexionButton" Text="Se déconnecter" Style="{StaticResource PrimaryButton}" Clicked="OnDeconnexion" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNav Grid.Row="2" Active="Profil" />
+    </Grid>
+</ContentPage>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             x:Class="SecourRapide237.MAUI.Pages.SMSPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader Grid.Row="0" Title="SMS de position" BackRoute="SOSPage" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,18,20,24" Spacing="12">
+
+                <Label Text="Prévenir un proche" Style="{StaticResource ScreenTitle}" />
+                <Label Text="Préparez un SMS avec votre position. Vous le vérifiez avant de l'envoyer."
+                       Style="{StaticResource Caption}" />
+
+                <Label Text="Numéro du proche" Style="{StaticResource FieldLabel}" Margin="0,8,0,0" />
+                <Border Style="{StaticResource FieldBorder}">
+                    <Entry x:Name="ProcheEntry" Placeholder="+237 6 XX XX XX XX" Keyboard="Telephone"
+                           Style="{StaticResource FieldEntry}" />
+                </Border>
+
+                <Label Text="Votre message" Style="{StaticResource FieldLabel}" />
+                <Border Style="{StaticResource FieldBorder}" Padding="12,4">
+                    <Editor x:Name="MessageEditor" Style="{StaticResource FieldEditor}"
+                            Text="J'ai besoin d'aide. Je suis avec une personne blessée. Merci d'appeler les secours."
+                            TextChanged="OnMessageChanged" />
+                </Border>
+
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="6">
+                    <CheckBox x:Name="PositionCheck" Color="{StaticResource Brand}" IsChecked="True"
+                              CheckedChanged="OnPositionChanged" VerticalOptions="Center" />
+                    <Label Grid.Column="1" Text="Joindre ma position au SMS" Style="{StaticResource BodyText}"
+                           VerticalOptions="Center" />
+                </Grid>
+
+                <Label Text="APERÇU DU SMS" Style="{StaticResource Overline}" Margin="0,6,0,0" />
+                <Border Style="{StaticResource Card}" BackgroundColor="#F5F5FA">
+                    <Label x:Name="ApercuLabel" Style="{StaticResource BodyText}" FontSize="13" />
+                </Border>
+
+                <Border x:Name="PositionAlerte" Style="{StaticResource WarnCard}" Padding="12,10" IsVisible="False">
+                    <Label Text="Position indisponible : le SMS partira sans coordonnées. Activez le GPS puis revenez sur cette page."
+                           FontSize="12" Style="{StaticResource BodyText}" />
+                </Border>
+
+                <Button Text="Préparer le SMS" Style="{StaticResource PrimaryButton}" Margin="0,6,0,0"
+                        Clicked="OnPreparerSms" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNav Grid.Row="2" Active="SOS" />
+    </Grid>
+</ContentPage>

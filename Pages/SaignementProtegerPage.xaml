@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             x:Class="SecourRapide237.MAUI.Pages.SaignementProtegerPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader Grid.Row="0" Title="Protéger et alerter" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,18,20,20" Spacing="12">
+
+                <Label Text="SAIGNEMENT ABONDANT" Style="{StaticResource Overline}" />
+                <Label Text="Avant tout, restez en sécurité." Style="{StaticResource ScreenTitle}" />
+                <Label Text="Protégez-vous pour pouvoir aider : gants ou sac plastique propre si possible."
+                       Style="{StaticResource Caption}" />
+
+                <Border Style="{StaticResource AlertCard}" Margin="0,4,0,0">
+                    <VerticalStackLayout Spacing="3">
+                        <Label Text="Le sang sort-il abondamment ?" FontAttributes="Bold" TextColor="{StaticResource Brand}" />
+                        <Label Text="Si oui, une compression immédiate sur la plaie est nécessaire. Faites d'abord les 3 réflexes ci-dessous."
+                               Style="{StaticResource Caption}" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Style="{StaticResource Card}">
+                    <Grid ColumnDefinitions="40,*" ColumnSpacing="12">
+                        <Border BackgroundColor="{StaticResource BrandSoft}" WidthRequest="36" HeightRequest="36"
+                                StrokeThickness="0" VerticalOptions="Start">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18" />
+                            </Border.StrokeShape>
+                            <Label Text="1" TextColor="{StaticResource Brand}" FontAttributes="Bold"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Sécurisez les lieux" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                            <Label Text="Écartez le danger (circulation, feu, fil électrique) avant d'approcher." Style="{StaticResource Caption}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource Card}">
+                    <Grid ColumnDefinitions="40,*" ColumnSpacing="12">
+                        <Border BackgroundColor="{StaticResource BrandSoft}" WidthRequest="36" HeightRequest="36"
+                                StrokeThickness="0" VerticalOptions="Start">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18" />
+                            </Border.StrokeShape>
+                            <Label Text="2" TextColor="{StaticResource Brand}" FontAttributes="Bold"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Évaluez rapidement" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                            <Label Text="Combien de victimes ? La victime est-elle consciente ? Respire-t-elle ?" Style="{StaticResource Caption}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource Card}">
+                    <Grid ColumnDefinitions="40,*" ColumnSpacing="12">
+                        <Border BackgroundColor="{StaticResource BrandSoft}" WidthRequest="36" HeightRequest="36"
+                                StrokeThickness="0" VerticalOptions="Start">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18" />
+                            </Border.StrokeShape>
+                            <Label Text="3" TextColor="{StaticResource Brand}" FontAttributes="Bold"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Faites alerter" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                            <Label Text="Faites appeler le 112 / 119 ou utilisez le bouton SOS en haut de l'écran." Style="{StaticResource Caption}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Border Grid.Row="2" BackgroundColor="White" StrokeThickness="0" Padding="20,10,20,14">
+            <Button Text="Voir le geste de compression" Style="{StaticResource PrimaryButton}" Clicked="OnNextClicked" />
+        </Border>
+    </Grid>
+</ContentPage>

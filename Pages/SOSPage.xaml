@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             x:Class="SecourRapide237.MAUI.Pages.SOSPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader Grid.Row="0" Title="Urgence" ShowSos="False" BackRoute="HomePage" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,18,20,24" Spacing="14">
+
+                <Label Text="Demander de l'aide" Style="{StaticResource ScreenTitle}" />
+                <Label Text="Restez calme. Les secours vous guident au téléphone : répondez à leurs questions."
+                       Style="{StaticResource Caption}" />
+
+                <Button Text="📞  Appeler les secours · 112" Style="{StaticResource PrimaryButton}"
+                        HeightRequest="60" FontSize="17" Clicked="OnAppeler112" />
+                <Button Text="Appeler le SAMU · 119" Style="{StaticResource OutlineButton}" Clicked="OnAppeler119" />
+
+                <!-- Position -->
+                <Border Style="{StaticResource Card}" Margin="0,6,0,0">
+                    <VerticalStackLayout Spacing="6">
+                        <Label Text="VOTRE POSITION" Style="{StaticResource Overline}" />
+                        <Label x:Name="LieuLabel" Text="Recherche en cours…" Style="{StaticResource BodyText}"
+                               FontAttributes="Bold" FontSize="17" />
+                        <Label x:Name="CoordLabel" Text="" Style="{StaticResource Caption}" />
+                        <Label x:Name="StatutLabel" Text="" Style="{StaticResource Caption}" FontSize="11" />
+
+                        <Grid ColumnDefinitions="*,*" ColumnSpacing="10" Margin="0,8,0,0">
+                            <Button Grid.Column="0" Text="Actualiser" Style="{StaticResource OutlineButton}"
+                                    HeightRequest="44" FontSize="13" Clicked="OnActualiser" />
+                            <Button Grid.Column="1" Text="Copier" Style="{StaticResource OutlineButton}"
+                                    HeightRequest="44" FontSize="13" Clicked="OnCopier" />
+                        </Grid>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Button Text="Partager à un proche par SMS" Style="{StaticResource OutlineButton}" Clicked="OnSms" />
+
+                <Border Style="{StaticResource WarnCard}" Padding="12,10">
+                    <Label Text="Sans internet, l'appel et le SMS passent par le réseau de votre opérateur. Si le réseau est absent, essayez de vous déplacer vers un endroit dégagé."
+                           FontSize="12" Style="{StaticResource BodyText}" />
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNav Grid.Row="2" Active="SOS" />
+    </Grid>
+</ContentPage>

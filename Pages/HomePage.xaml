@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             x:Class="SecourRapide237.MAUI.Pages.HomePage"
+             BackgroundColor="{StaticResource Surface}"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- EN-TÊTE -->
+        <Grid Grid.Row="0" BackgroundColor="White" ColumnDefinitions="Auto,*,Auto,Auto" ColumnSpacing="12"
+              Padding="16,12">
+            <Border Grid.Column="0" BackgroundColor="{StaticResource Brand}" WidthRequest="38" HeightRequest="38"
+                    StrokeThickness="0" VerticalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <Label Text="+" TextColor="White" FontAttributes="Bold" FontSize="24"
+                       HorizontalOptions="Center" VerticalOptions="Center" />
+            </Border>
+
+            <VerticalStackLayout Grid.Column="1" VerticalOptions="Center" Spacing="2">
+                <Label FontSize="16" FontAttributes="Bold" TextColor="{StaticResource Ink}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="SecourRapide" />
+                            <Span Text="237" TextColor="{StaticResource Brand}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label x:Name="StatutLabel" Text="Mode hors ligne actif" FontSize="11"
+                       TextColor="{StaticResource OkText}" FontAttributes="Bold" />
+            </VerticalStackLayout>
+
+            <!-- Notifications -->
+            <Label Grid.Column="2" Text="🔔" FontSize="22" VerticalOptions="Center" Padding="6">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnNotifications" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <!-- Profil -->
+            <Border Grid.Column="3" WidthRequest="40" HeightRequest="40" BackgroundColor="#F3F3F8"
+                    StrokeThickness="0" VerticalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="20" />
+                </Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnProfil" />
+                </Border.GestureRecognizers>
+                <Label Text="👤" FontSize="18" HorizontalOptions="Center" VerticalOptions="Center" />
+            </Border>
+        </Grid>
+
+        <!-- CONTENU -->
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16,18,16,24" Spacing="14">
+
+                <Label Text="Que s'est-il passé ?" Style="{StaticResource ScreenTitle}" />
+                <Label Text="Choisissez l'urgence pour obtenir les gestes de premiers secours immédiats."
+                       Style="{StaticResource Caption}" />
+
+                <!-- Bandeau SOS -->
+                <Border BackgroundColor="{StaticResource Brand}" StrokeThickness="0" Padding="16,14">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="16" />
+                    </Border.StrokeShape>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSos" />
+                    </Border.GestureRecognizers>
+                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <VerticalStackLayout Spacing="2" VerticalOptions="Center">
+                            <Label Text="SOS · Besoin d'aide" TextColor="White" FontAttributes="Bold" FontSize="17" />
+                            <Label Text="Appeler les secours et partager ma position" TextColor="#FFD9D9" FontSize="12" />
+                        </VerticalStackLayout>
+                        <Label Grid.Column="1" Text="›" TextColor="White" FontSize="30" VerticalOptions="Center" />
+                    </Grid>
+                </Border>
+
+                <!-- Situations -->
+                <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="12" RowSpacing="12">
+                    <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource Card}" Padding="10,14"
+                            MinimumHeightRequest="124" VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCategorie" CommandParameter="saignement" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Border BackgroundColor="#FFD5D5" WidthRequest="54" HeightRequest="54" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="27" />
+                                </Border.StrokeShape>
+                                <Label Text="🩸" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Text="Saignement" Style="{StaticResource BodyText}" FontAttributes="Bold" FontSize="13"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource Card}" Padding="10,14"
+                            MinimumHeightRequest="124" VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCategorie" CommandParameter="brulure" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Border BackgroundColor="#FFE3C8" WidthRequest="54" HeightRequest="54" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="27" />
+                                </Border.StrokeShape>
+                                <Label Text="🔥" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Text="Brûlure" Style="{StaticResource BodyText}" FontAttributes="Bold" FontSize="13"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource Card}" Padding="10,14"
+                            MinimumHeightRequest="124" VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCategorie" CommandParameter="fracture" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Border BackgroundColor="#C8E8FF" WidthRequest="54" HeightRequest="54" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="27" />
+                                </Border.StrokeShape>
+                                <Label Text="🦴" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Text="Fracture" Style="{StaticResource BodyText}" FontAttributes="Bold" FontSize="13"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource Card}" Padding="10,14"
+                            MinimumHeightRequest="124" VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCategorie" CommandParameter="etouffement" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Border BackgroundColor="#E0D5FF" WidthRequest="54" HeightRequest="54" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="27" />
+                                </Border.StrokeShape>
+                                <Label Text="🫁" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Text="Étouffement" Style="{StaticResource BodyText}" FontAttributes="Bold" FontSize="13"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="0" Style="{StaticResource Card}" Padding="10,14"
+                            MinimumHeightRequest="124" VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCategorie" CommandParameter="inconscient" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Border BackgroundColor="#D5E0FF" WidthRequest="54" HeightRequest="54" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="27" />
+                                </Border.StrokeShape>
+                                <Label Text="😴" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Text="Perte de connaissance" Style="{StaticResource BodyText}" FontAttributes="Bold" FontSize="13"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                    <Border Grid.Row="2" Grid.Column="1" Style="{StaticResource Card}" Padding="10,14"
+                            MinimumHeightRequest="124" VerticalOptions="Fill">
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnCategorie" CommandParameter="accident" />
+                        </Border.GestureRecognizers>
+                        <VerticalStackLayout Spacing="8" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Border BackgroundColor="#FFD8A0" WidthRequest="54" HeightRequest="54" StrokeThickness="0">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="27" />
+                                </Border.StrokeShape>
+                                <Label Text="🚗" FontSize="24" HorizontalOptions="Center" VerticalOptions="Center" />
+                            </Border>
+                            <Label Text="Accident de la route" Style="{StaticResource BodyText}" FontAttributes="Bold" FontSize="13"
+                                   HorizontalTextAlignment="Center" />
+                        </VerticalStackLayout>
+                    </Border>
+                </Grid>
+
+                <Label Text="Tout le guide de premiers secours  ›" TextColor="{StaticResource Brand}"
+                       FontAttributes="Bold" FontSize="14" HorizontalOptions="Center" Padding="0,6">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGuide" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <Border Style="{StaticResource AlertCard}" Padding="12,10">
+                    <Label Text="Urgence vitale ? Appelez le 112 ou le 119 (SAMU Cameroun), service gratuit 24h/24."
+                           FontSize="12" TextColor="{StaticResource Brand}" FontAttributes="Bold" />
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNav Grid.Row="2" Active="Home" />
+    </Grid>
+</ContentPage>

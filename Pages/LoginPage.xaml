@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SecourRapide237.MAUI.Pages.LoginPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <ScrollView>
+        <VerticalStackLayout Padding="22,20,22,28" Spacing="14">
+
+            <!-- Logo -->
+            <HorizontalStackLayout Spacing="10" Margin="0,4,0,4">
+                <Border BackgroundColor="{StaticResource Brand}" StrokeThickness="0" WidthRequest="36" HeightRequest="36">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="9" />
+                    </Border.StrokeShape>
+                    <Label Text="+" TextColor="White" FontAttributes="Bold" FontSize="22"
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                </Border>
+                <Label VerticalOptions="Center" FontSize="18" FontAttributes="Bold" TextColor="{StaticResource Ink}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="SecourRapide" />
+                            <Span Text="237" TextColor="{StaticResource Brand}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </HorizontalStackLayout>
+
+            <!-- Accès sans compte -->
+            <Border Style="{StaticResource AlertCard}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Une urgence n'attend pas." FontAttributes="Bold" FontSize="15"
+                           TextColor="{StaticResource Brand}" />
+                    <Label Text="Accédez aux gestes de premiers secours sans créer de compte."
+                           Style="{StaticResource Caption}" />
+                    <Button Text="Accéder aux secours sans compte  ›" Style="{StaticResource PrimaryButton}"
+                            HeightRequest="48" FontSize="14" Clicked="OnGuestClicked" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Label Text="Se connecter" Style="{StaticResource ScreenTitle}" Margin="0,10,0,0" />
+
+            <Label Text="Numéro de téléphone" Style="{StaticResource FieldLabel}" />
+            <Border Style="{StaticResource FieldBorder}">
+                <Entry x:Name="PhoneEntry" Placeholder="+237 6 XX XX XX XX" Keyboard="Telephone"
+                       Style="{StaticResource FieldEntry}" ReturnType="Next" />
+            </Border>
+
+            <Label Text="Mot de passe" Style="{StaticResource FieldLabel}" />
+            <Border Style="{StaticResource FieldBorder}">
+                <Grid ColumnDefinitions="*,Auto">
+                    <Entry x:Name="PasswordEntry" Placeholder="Votre mot de passe" IsPassword="True"
+                           Style="{StaticResource FieldEntry}" ReturnType="Done" Completed="OnLoginClicked" />
+                    <Label Grid.Column="1" Text="👁" FontSize="18" VerticalOptions="Center" Padding="8,0">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnTogglePassword" />
+                        </Label.GestureRecognizers>
+                    </Label>
+                </Grid>
+            </Border>
+
+            <Label Text="Mot de passe oublié ?" TextColor="{StaticResource Brand}" FontSize="13"
+                   FontAttributes="Bold" HorizontalOptions="End">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnForgotPassword" />
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Button Text="Se connecter" Style="{StaticResource PrimaryButton}" Clicked="OnLoginClicked" />
+
+            <Label Text="ou" Style="{StaticResource Caption}" HorizontalOptions="Center" />
+
+            <Button Text="Créer un compte facultatif" Style="{StaticResource OutlineButton}" Clicked="OnRegisterClicked" />
+
+            <Label Text="L'application ne remplace pas les secours. En cas de danger vital, appelez le 112 ou le 119."
+                   Style="{StaticResource Caption}" FontSize="11" HorizontalTextAlignment="Center" Margin="0,10,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

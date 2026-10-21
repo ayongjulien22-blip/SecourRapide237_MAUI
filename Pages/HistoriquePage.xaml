@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             xmlns:models="clr-namespace:SecourRapide237.MAUI.Models"
+             x:Class="SecourRapide237.MAUI.Pages.HistoriquePage"
+             BackgroundColor="{StaticResource Surface}"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader Grid.Row="0" Title="Historique" BackRoute="HomePage" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="16,18,16,24" Spacing="12">
+
+                <Label Text="Historique d'interventions" Style="{StaticResource ScreenTitle}" FontSize="22" />
+
+                <VerticalStackLayout x:Name="ListeInterventions" Spacing="10">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="models:Intervention">
+                            <Border Style="{StaticResource Card}">
+                                <VerticalStackLayout Spacing="3">
+                                    <Label Text="{Binding Titre}" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                                    <Label Text="{Binding Detail}" Style="{StaticResource Caption}" />
+                                    <Label Text="{Binding Date, StringFormat='{0:dd/MM/yyyy · HH:mm}'}"
+                                           FontSize="11" TextColor="{StaticResource Brand}" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </VerticalStackLayout>
+
+                <Label x:Name="VideLabel" Text="Aucune intervention enregistrée pour le moment."
+                       Style="{StaticResource Caption}" HorizontalOptions="Center" Margin="0,20,0,0"
+                       HorizontalTextAlignment="Center" />
+
+                <Button x:Name="EffacerButton" Text="Effacer l'historique" Style="{StaticResource OutlineButton}"
+                        Margin="0,10,0,0" Clicked="OnEffacer" />
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <controls:BottomNav Grid.Row="2" Active="Historique" />
+    </Grid>
+</ContentPage>

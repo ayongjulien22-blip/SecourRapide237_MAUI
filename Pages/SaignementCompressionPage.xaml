@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             x:Class="SecourRapide237.MAUI.Pages.SaignementCompressionPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <controls:PageHeader Grid.Row="0" Title="Compression directe" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20,18,20,20" Spacing="12">
+
+                <Grid ColumnDefinitions="*,Auto">
+                    <Label Text="SAIGNEMENT · COMPRESSION DIRECTE" Style="{StaticResource Overline}" VerticalOptions="Center" />
+                    <Border Grid.Column="1" BackgroundColor="{StaticResource BrandSoft}" StrokeThickness="0" Padding="10,4">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="10" />
+                        </Border.StrokeShape>
+                        <Label Text="Étape 2/2" FontSize="11" FontAttributes="Bold" TextColor="{StaticResource Brand}" />
+                    </Border>
+                </Grid>
+
+                <Label Text="Appuyez. Ne relâchez pas." Style="{StaticResource ScreenTitle}" />
+
+                <Border BackgroundColor="#FFD5D5" StrokeThickness="0" HeightRequest="130">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="18" />
+                    </Border.StrokeShape>
+                    <VerticalStackLayout VerticalOptions="Center" HorizontalOptions="Center" Spacing="4">
+                        <Label Text="🩹" FontSize="52" HorizontalOptions="Center" />
+                        <Label Text="Pression continue sur la plaie" FontSize="12" TextColor="{StaticResource Brand}"
+                               FontAttributes="Bold" HorizontalOptions="Center" />
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Style="{StaticResource Card}">
+                    <Grid ColumnDefinitions="40,*" ColumnSpacing="12">
+                        <Border BackgroundColor="{StaticResource BrandSoft}" WidthRequest="36" HeightRequest="36"
+                                StrokeThickness="0" VerticalOptions="Start">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18" />
+                            </Border.StrokeShape>
+                            <Label Text="1" TextColor="{StaticResource Brand}" FontAttributes="Bold"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Comprimez directement" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                            <Label Text="Appuyez fort sur la plaie avec un linge propre, ou avec la paume de la main (gantée si possible)." Style="{StaticResource Caption}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource Card}">
+                    <Grid ColumnDefinitions="40,*" ColumnSpacing="12">
+                        <Border BackgroundColor="{StaticResource BrandSoft}" WidthRequest="36" HeightRequest="36"
+                                StrokeThickness="0" VerticalOptions="Start">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18" />
+                            </Border.StrokeShape>
+                            <Label Text="2" TextColor="{StaticResource Brand}" FontAttributes="Bold"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Allongez la victime" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                            <Label Text="Allongée, elle risque moins un malaise. Rassurez-la et parlez-lui calmement." Style="{StaticResource Caption}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource Card}">
+                    <Grid ColumnDefinitions="40,*" ColumnSpacing="12">
+                        <Border BackgroundColor="{StaticResource BrandSoft}" WidthRequest="36" HeightRequest="36"
+                                StrokeThickness="0" VerticalOptions="Start">
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="18" />
+                            </Border.StrokeShape>
+                            <Label Text="3" TextColor="{StaticResource Brand}" FontAttributes="Bold"
+                                   HorizontalOptions="Center" VerticalOptions="Center" />
+                        </Border>
+                        <VerticalStackLayout Grid.Column="1" Spacing="3">
+                            <Label Text="Maintenez jusqu'au relais" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                            <Label Text="Gardez la pression sans interruption jusqu'à l'arrivée des secours." Style="{StaticResource Caption}" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </Border>
+
+                <Border Style="{StaticResource WarnCard}" Padding="12,10">
+                    <Label Text="⚠️  Si le linge est imbibé, ajoutez-en un par-dessus sans retirer le premier. Suivez les consignes des secours au téléphone."
+                           FontSize="12" Style="{StaticResource BodyText}" FontAttributes="Bold" />
+                </Border>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <VerticalStackLayout Grid.Row="2" Spacing="8" Padding="20,10,20,14" BackgroundColor="White">
+            <Button Text="Appeler les secours" Style="{StaticResource PrimaryButton}" Clicked="OnAppelerClicked" />
+            <Button Text="J'ai terminé le geste" Style="{StaticResource OutlineButton}" HeightRequest="46" Clicked="OnTermineClicked" />
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

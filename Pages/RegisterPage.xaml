@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:SecourRapide237.MAUI.Controls"
+             x:Class="SecourRapide237.MAUI.Pages.RegisterPage"
+             BackgroundColor="White"
+             Shell.NavBarIsVisible="False"
+             Shell.TabBarIsVisible="False">
+    <Grid RowDefinitions="Auto,*">
+
+        <controls:PageHeader Grid.Row="0" Title="Compte facultatif" ShowSos="False" />
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="22,20,22,28" Spacing="12">
+
+                <Border Style="{StaticResource AlertCard}" Padding="12,10">
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGuestClicked" />
+                    </Border.GestureRecognizers>
+                    <Label Text="Urgence ?  Continuer sans compte  ›" TextColor="{StaticResource Brand}"
+                           FontAttributes="Bold" FontSize="13" />
+                </Border>
+
+                <Label Text="Faisons connaissance." Style="{StaticResource ScreenTitle}" Margin="0,8,0,0" />
+                <Label Text="Enregistrez vos préférences. Les premiers secours restent accessibles sans compte."
+                       Style="{StaticResource Caption}" />
+
+                <Label Text="Prénom et nom" Style="{StaticResource FieldLabel}" Margin="0,8,0,0" />
+                <Border Style="{StaticResource FieldBorder}">
+                    <Entry x:Name="NomEntry" Placeholder="Ex. Julien Ngombang" Style="{StaticResource FieldEntry}"
+                           ReturnType="Next" />
+                </Border>
+
+                <Label Text="Numéro de téléphone" Style="{StaticResource FieldLabel}" />
+                <Border Style="{StaticResource FieldBorder}">
+                    <Entry x:Name="PhoneEntry" Placeholder="+237 6 XX XX XX XX" Keyboard="Telephone"
+                           Style="{StaticResource FieldEntry}" ReturnType="Next" />
+                </Border>
+
+                <Label Text="Mot de passe" Style="{StaticResource FieldLabel}" />
+                <Border Style="{StaticResource FieldBorder}">
+                    <Entry x:Name="PasswordEntry" Placeholder="6 caractères minimum" IsPassword="True"
+                           Style="{StaticResource FieldEntry}" ReturnType="Next" />
+                </Border>
+
+                <Label Text="Confirmer le mot de passe" Style="{StaticResource FieldLabel}" />
+                <Border Style="{StaticResource FieldBorder}">
+                    <Entry x:Name="ConfirmEntry" Placeholder="Retapez le mot de passe" IsPassword="True"
+                           Style="{StaticResource FieldEntry}" ReturnType="Done" Completed="OnCreateClicked" />
+                </Border>
+
+                <Grid ColumnDefinitions="Auto,*" ColumnSpacing="6" Margin="0,4,0,0">
+                    <CheckBox x:Name="PositionCheck" Color="{StaticResource Brand}" IsChecked="True"
+                              VerticalOptions="Start" />
+                    <Label Grid.Column="1" VerticalOptions="Center"
+                           Text="J'autorise l'application à utiliser ma position pour l'envoyer à mes proches en cas d'urgence."
+                           Style="{StaticResource Caption}" />
+                </Grid>
+
+                <Button Text="Créer mon compte" Style="{StaticResource PrimaryButton}" Margin="0,8,0,0"
+                        Clicked="OnCreateClicked" />
+
+                <Label HorizontalOptions="Center" Margin="0,10,0,0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Déjà un compte ?  " TextColor="{StaticResource Muted}" />
+                            <Span Text="Se connecter" TextColor="{StaticResource Brand}" FontAttributes="Bold" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnGoLogin" />
+                    </Label.GestureRecognizers>
+                </Label>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
